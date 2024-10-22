@@ -1,27 +1,45 @@
-<html>
-    <body>
-        <div class="login">
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Forest Fire Prediction</title>
+  </head>
+  <body>
+    <h1>Forest Fire Prediction</h1>
+    <form method="POST" action="/predictdata">
+      <label for="Temperature">Temperature:</label>
+      <input type="text" name="Temperature" required /><br />
 
-            <h1>FWI Prediction</h1>
+      <label for="RH">Relative Humidity (RH):</label>
+      <input type="text" name="RH" required /><br />
 
-            <!--Main Input For Query To Our ML-->
-            <form action="{{url_for('predict_datapoint')}}" method="post">
-                <input type="text" name="Temperature" placeholder="Temperature" required /> <br>
-                <input type="text" name="RH" placeholder="RH" required /> <br>
-                <input type="text" name="Ws" placeholder="Ws" required /> <br>
-                <input type="text" name="Rain" placeholder="Rain" required /> <br>
-                <input type="text" name="FFMC" placeholder="FFMC" required /> <br>
-                <input type="text" name="DMC" placeholder="DMC" required /> <br>
-                <input type="text" name="ISI" placeholder="ISI" required /> <br>
-                <input type="text" name="Classes" placeholder="Classes" required /> <br>
-                <input type="text" name="Region" placeholder="Region" required /> <br>
-                
-    
-                <button type="submit" class=""btn btn-primary btn-block btn-large">Predict</button>
-            </form>
-        <h2>
-            The FWI prediction is {{result}}
-        </h2>
-        </div>          
-    </body>
+      <label for="Ws">Wind Speed (Ws):</label>
+      <input type="text" name="Ws" required /><br />
+
+      <label for="Rain">Rain:</label>
+      <input type="text" name="Rain" required /><br />
+
+      <label for="FFMC">FFMC:</label>
+      <input type="text" name="FFMC" required /><br />
+
+      <label for="DMC">DMC:</label>
+      <input type="text" name="DMC" required /><br />
+
+      <label for="ISI">ISI:</label>
+      <input type="text" name="ISI" required /><br />
+
+      <label for="Classes">Classes:</label>
+      <input type="text" name="Classes" required /><br />
+
+      <label for="Region">Region:</label>
+      <input type="text" name="Region" required /><br />
+
+      <input type="submit" value="Predict" />
+    </form>
+
+    {% if result is not none %}
+    <h2>Prediction Result: {{ result }}</h2>
+    {% endif %}
+  </body>
 </html>
